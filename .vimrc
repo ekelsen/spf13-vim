@@ -115,9 +115,9 @@
         let g:solarized_termcolors=256
         color solarized                 " load a colorscheme
     endif
-        let g:solarized_termtrans=1
-        let g:solarized_contrast="high"
-        let g:solarized_visibility="high"
+    let g:solarized_termtrans=0
+    let g:solarized_contrast="high"
+    let g:solarized_visibility="high"
     set tabpagemax=15               " only show 15 tabs
     set showmode                    " display the current mode
 
@@ -156,8 +156,8 @@
     set whichwrap=b,s,h,l,<,>,[,]   " backspace and cursor keys wrap to
     set scrolljump=5                " lines to scroll when cursor leaves screen
     set scrolloff=3                 " minimum lines to keep above and below cursor
-    set foldenable                  " auto fold code
-    set list
+    set nofoldenable                  " auto fold code
+    set nolist
     set listchars=tab:,.,trail:.,extends:#,nbsp:. " Highlight problematic whitespace
 
 
@@ -166,10 +166,10 @@
 " Formatting {
     set nowrap                      " wrap long lines
     set autoindent                  " indent at the same level of the previous line
-    set shiftwidth=4                " use indents of 4 spaces
+    set shiftwidth=2                " use indents of 4 spaces
     set expandtab                   " tabs are spaces, not tabs
-    set tabstop=4                   " an indentation every four columns
-    set softtabstop=4               " let backspace delete indent
+    set tabstop=2                   " an indentation every four columns
+    set softtabstop=2               " let backspace delete indent
     "set matchpairs+=<:>                " match, to be used with %
     set pastetoggle=<F12>           " pastetoggle (sane indentation on pastes)
     "set comments=sl:/*,mb:*,elx:*/  " auto format comment blocks
@@ -190,10 +190,10 @@
     endif
 
     " Easier moving in tabs and windows
-    map <C-J> <C-W>j<C-W>_
-    map <C-K> <C-W>k<C-W>_
-    map <C-L> <C-W>l<C-W>_
-    map <C-H> <C-W>h<C-W>_
+    map <C-J> <C-W>j<C-W>
+    map <C-K> <C-W>k<C-W>
+    map <C-L> <C-W>l<C-W>
+    map <C-H> <C-W>h<C-W>
 
     " Wrapped lines goes down/up to next row, rather than next line in file.
     nnoremap j gj
@@ -488,20 +488,6 @@
         let g:undotree_SetFocusWhenToggle=1 " if undotree is opened, it is likely one wants to interact with it.
      " }
 
-     " indent_guides {
-        if !exists('g:spf13_no_indent_guides_autocolor')
-            let g:indent_guides_auto_colors = 1
-        else
-            " for some colorscheme ,autocolor will not work,like 'desert','ir_black'.
-            autocmd VimEnter,Colorscheme * :hi IndentGuidesOdd  guibg=#212121   ctermbg=3
-            autocmd VimEnter,Colorscheme * :hi IndentGuidesEven guibg=#404040 ctermbg=4
-        endif
-        set ts=4 sw=4 et
-        let g:indent_guides_start_level = 2
-        let g:indent_guides_guide_size = 1
-        let g:indent_guides_enable_on_vim_startup = 1
-     " }
-
 " }
 
 " GUI Settings {
@@ -515,7 +501,7 @@
             set guifont=Andale\ Mono\ Regular:h16,Menlo\ Regular:h15,Consolas\ Regular:h16,Courier\ New\ Regular:h18
         endif
         if has('gui_macvim')
-            set transparency=5          " Make the window slightly transparent
+            set transparency=0          " Make the window slightly transparent
         endif
     else
         if &term == 'xterm' || &term == 'screen'
